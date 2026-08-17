@@ -9,13 +9,13 @@
 1. Clonar o repositório:
 
    ```sh
-   git clone https://github.com/luan-tavares/servidor-de-arquivos-estaticos-e-dom
+   git clone https://github.com/luan-tavares/unifaat-frontend-bimestre-01
    ```
 
 2. Entrar na pasta do projeto:
 
    ```sh
-   cd servidor-de-arquivos-estaticos-e-dom
+   cd unifaat-frontend-bimestre-01
    ```
 
 3. Criar o arquivo `.env` na raiz do projeto copiando o `.env.example`:
