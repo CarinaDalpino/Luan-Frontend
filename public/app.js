@@ -8,16 +8,17 @@ const names = [
     "Pedro Almeida",
     "Camila Rocha",
     "Lucas Fernandes",
-    "Beatriz Gomes"
+    "Beatriz Gomes",
+    "Jefferson github"
 ];
 
 
 // Obter os elementos 
 const sectionListElement = document.getElementById("list-container");
 const inputListAddElement = document.getElementById("list-add");
-const buttonListAddElement = document.getElementsByClassName("btn")[0];
+const buttonListAddElementList = document.getElementsByClassName("btn");
 
-console.log(sectionListElement, inputListAddElement, buttonListAddElement)
+const buttonListAddElement = buttonListAddElementList[0];
 
 
 // Criar um ELEMENTO ul - elemento que engloba uma lista 
@@ -41,19 +42,11 @@ names.forEach((name) => {
 
     // Criar o botao excluir
     const buttonDeleteElement = document.createElement("button");
-    buttonDeleteElement.innerHTML = "<strong>Excluir</strong>";
+    buttonDeleteElement.innerText = "Excluir";
     buttonDeleteElement.addEventListener("click", (event) => {
-        // Obter o elemento que acionou a ação (botão que foi clicado)
-        const currentTargetElement = event.currentTarget;
-
-        // Queremos obter o li, seu parent (pai)
-        const liParentElement = currentTargetElement.parentElement;
-
-        // Remove o li
-        liParentElement.remove();
+        // TODO: remover APENAS este item (li) da lista quando o
+        // botão for clicado (dica: event.currentTarget e parentElement).
     });
-
-    liElement.append(" ", buttonDeleteElement);
 
     // Adicionar na árvore DOM, no nosso ul principal
     ulElement.append(liElement);
@@ -70,35 +63,10 @@ buttonListAddElement.addEventListener("click", (event) => {
         return;
     }
 
-    // Criar o elemento li, item de uma lista
-    const liElement = document.createElement("li");
-
-    const buttonDeleteElement = document.createElement("button");
-
-    // PODEMOS ADICIONAR O LISTENER NO ELEMENTO MESMO ADICIONANDO ELE NO DOM DEPOIS
-    buttonDeleteElement.addEventListener("click", (event) => {
-        // Obter o elemento que acionou a ação (botão que foi clicado)
-        const currentTargetElement = event.currentTarget;
-
-        // Queremos obter o li, seu parent (pai)
-        const liParentElement = currentTargetElement.parentElement;
-
-        // Remove o li
-        liParentElement.remove();
-    });
-
-
-    buttonDeleteElement.innerHTML = "<strong>Excluir</strong>";
-
-    // Adicionar um conteúdo texto no elemento li
-    liElement.append(inputValue, "  ", buttonDeleteElement);
-
-    // Adicionar na árvore DOM, no nosso ul principal
-    ulElement.append(liElement);
-
-    // resetar o valor do input
-    inputListAddElement.value = "";
-
+    // TODO: criar o li do novo item (com o texto do inputValue) e o
+    // botão "Excluir" dele (igual ao padrão do forEach acima),
+    // adicionar o item na lista (ulElement) e limpar o input
+    // depois de adicionar.
 });
 
 
