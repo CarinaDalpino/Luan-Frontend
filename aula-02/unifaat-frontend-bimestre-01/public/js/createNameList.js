@@ -1,0 +1,32 @@
+export default function createNameList(name) {
+
+    const liElement = document.createElement("li");
+    liElement.classList.add(
+        "list-group-item",
+        "d-flex",
+        "justify-content-between",
+        "align-items-center"
+    );
+
+    const nameElement = document.createElement("span");
+    nameElement.innerText = name;
+
+    liElement.append(nameElement);
+
+    const buttonDeleteElement = document.createElement("button");
+    buttonDeleteElement.classList.add("btn", "btn-danger", "btn-sm");
+    buttonDeleteElement.innerText = "Excluir";
+
+    buttonDeleteElement.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        console.log("target:", event.target);
+        console.log("currentTarget:", event.currentTarget);
+
+        event.currentTarget.parentElement.remove();
+    });
+
+    liElement.append(buttonDeleteElement);
+
+    return liElement;
+}
