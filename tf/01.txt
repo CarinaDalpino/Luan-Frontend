@@ -1,6 +1,8 @@
 UNIFAAT - FRONTEND 2026.2
 TRABALHO FINAL 01 - LISTA COM ADICIONAR E EXCLUIR
 
+Repositorio base (obrigatorio): https://github.com/luan-tavares/unifaat-frontend-bimestre-01
+
 --------------------------------------------------
 CONTEXTO
 --------------------------------------------------
