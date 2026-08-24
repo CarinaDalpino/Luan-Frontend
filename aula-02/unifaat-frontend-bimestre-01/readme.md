@@ -1,4 +1,4 @@
-# Unifaat :: Frontend :: Aula 01 - Servidor de arquivos estáticos e DOM <a name="servidor-de-arquivos-estaticos-e-dom"></a>
+# Unifaat :: Frontend :: Aula 02 - CSS, Seletores e JS Reativo
 
 ---
 
