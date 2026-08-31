@@ -1,68 +1,57 @@
-export default function editNameList(liElement) {
+export default function editNameList(liElement, createDeleteButton) {
 
-    const nameElement = liElement.querySelector("span");
+    liElement.addEventListener("click", (event) => {
+        const nameElement = liElement.querySelector(".list-name");
 
-    if (!nameElement) {
-        return;
-    }
-
-    const currentName = nameElement.innerText;
-
-    const inputElement = document.createElement("input");
-    inputElement.setAttribute("type", "text");
-    inputElement.value = currentName;
-    inputElement.classList.add("form-control");
-
-    const buttonAlterElement = document.createElement("button");
-    buttonAlterElement.classList.add("btn", "btn-success", "btn-sm");
-    buttonAlterElement.innerText = "Alterar";
-
-    liElement.innerHTML = "";
-
-    liElement.append(inputElement);
-    liElement.append(buttonAlterElement);
-
-    const confirmEdit = () => {
-
-        const newName = inputElement.value.trim();
-
-        if (newName === "") {
-            inputElement.value = currentName;
+        if (nameElement === null || event.target !== nameElement) {
             return;
         }
 
-        liElement.innerHTML = "";
+        const inputElement = document.createElement("input");
+        inputElement.setAttribute("type", "text");
+        inputElement.classList.add("form-control");
+        inputElement.value = nameElement.innerText;
 
-        const newNameElement = document.createElement("span");
-        newNameElement.innerText = newName;
+        const buttonChangeElement = document.createElement("button");
+        buttonChangeElement.setAttribute("type", "button");
+        buttonChangeElement.classList.add("btn", "btn-success", "btn-sm");
+        buttonChangeElement.innerText = "Alterar";
 
-        liElement.append(newNameElement);
+        nameElement.remove();
+        liElement.querySelector("button").remove();
+        liElement.append(inputElement, buttonChangeElement);
+        inputElement.focus();
 
-        const buttonDeleteElement = document.createElement("button");
-        buttonDeleteElement.classList.add("btn", "btn-danger", "btn-sm");
-        buttonDeleteElement.innerText = "Excluir";
+        const confirmChange = () => {
+            const newName = inputElement.value.trim();
 
-        buttonDeleteElement.addEventListener("click", (event) => {
-            event.preventDefault();
-            event.currentTarget.parentElement.remove();
+            if (newName === "") {
+                return;
+            }
+
+            const newNameElement = document.createElement("span");
+            newNameElement.classList.add("list-name");
+            newNameElement.append(document.createTextNode(newName));
+
+            inputElement.remove();
+            buttonChangeElement.remove();
+            liElement.prepend(newNameElement);
+            liElement.append(createDeleteButton());
+        };
+
+        buttonChangeElement.addEventListener("click", (changeEvent) => {
+            changeEvent.preventDefault();
+            confirmChange();
         });
 
-        liElement.append(buttonDeleteElement);
-    };
+        inputElement.addEventListener("keydown", (keyEvent) => {
+            if (keyEvent.key !== "Enter") {
+                return;
+            }
 
-    buttonAlterElement.addEventListener("click", (event) => {
-        event.preventDefault();
-        confirmEdit();
+            keyEvent.preventDefault();
+            confirmChange();
+        });
     });
 
-    inputElement.addEventListener("keypress", (event) => {
-        if (event.key !== "Enter") {
-            return;
-        }
-
-        event.preventDefault();
-        confirmEdit();
-    });
-
-    inputElement.focus();
 }
