@@ -1,0 +1,29 @@
+--------------------------------------------------
+REPOSITÓRIO
+--------------------------------------------------
+https://github.com/luan-tavares/unifaat-frontend-bimestre-01
+
+--------------------------------------------------
+CONTEXTO
+--------------------------------------------------
+Na Aula 03 vimos Vite, forms e listeners, e o projeto passou a consumir
+a API de verdade com axios (fetch/XHR liberado a partir de agora). Hoje
+a lista de usuarios (frontend/public/js/render/listUserRender.js) busca
+sempre a primeira pagina via userListApi() e mostra todo mundo de uma
+vez, sem nenhum controle de pagina.
+
+O backend ja devolve tudo que voces precisam pra paginar: GET /users
+aceita os query params page e limit e responde no formato
+
+  { page, limit, total, next, data }
+
+(deem uma olhada em backend/app/Http/Controllers/UserApi/ListUserController.js
+pra entender cada campo). Alem disso, ja existe uma rota
+PUT /users/:id (UpdateUserController) que recebe { name, email } (e
+password, opcional) e atualiza o usuario no banco.
+
+--------------------------------------------------
+O QUE VOCES PRECISAM FAZER
+--------------------------------------------------
+1. Paginacao
+   Adicionar controles de pagina abaixo da lista (botoes 
