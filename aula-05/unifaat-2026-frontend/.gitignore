@@ -1,0 +1,6 @@
+.env
+/src/node_modules/
+node_modules/
+.claude/
+/src/frontend/public/*
+!/src/frontend/public/.gitkeep
